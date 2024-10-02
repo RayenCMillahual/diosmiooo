@@ -1,0 +1,131 @@
+:root {
+    --primary-color: #FF6F61; /* Color principal */
+    --background-color: #f5f5f5; /* Color de fondo */
+    --sidebar-bg-color: #f4f4f4; /* Color de fondo de la barra lateral */
+    --card-bg-color: white; /* Color de fondo de las tarjetas */
+    --text-color: #333; /* Color del texto */
+    --white-color: #ffffff; /* Color blanco */
+    --hover-color: #e55a50; /* Color para el hover */
+}
+
+/* Estilo global */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%; /* Asegura que el body ocupe el 100% */
+    height: 100%; /* Asegura que el body ocupe toda la altura */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+}
+
+/* Estilos para el header y footer */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1.5em;
+    text-align: center;
+    width: 100%; /* Asegura que el header ocupe todo el ancho */
+    position: relative; /* Esto ayuda a que el header se mantenga en su lugar */
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    grid-area: footer; 
+}
+
+/* Navegación */
+nav a {
+    margin: 0 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Contenedor principal */
+.grid-container {
+    min-height: 100vh; /* Asegura que el contenedor principal ocupe al menos la altura completa de la ventana */
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "main main main"
+        "footer footer footer"; /* Coloca el footer al final */
+    grid-template-columns: 1fr; /* Cambia esto si necesitas más columnas */
+    gap: 20px;
+}
+
+main {
+    grid-area: main;
+    padding: 1em;
+    background-color: var(--card-bg-color);
+    border-radius: 8px;
+}
+
+/* Estilos de las tarjetas de perfil */
+.profile-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.profile-card h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: var(--text-color);
+}
+
+.profile-card p {
+    margin: 5px 0;
+}
+
+/* Estilos de botones */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: var(--hover-color);
+    transform: scale(1.05);
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Un solo columna en pantallas pequeñas */
+    }
+
+    footer {
+        font-size: 14px;
+    }
+
+    .profile-card {
+        flex-direction: column; /* Alinear elementos verticalmente en tarjetas de perfil */
+        align-items: flex-start; /* Alinear a la izquierda */
+    }
+
+    .profile-card img {
+        margin-bottom: 10px; /* Espaciado en la parte inferior de la imagen */
+    }
+}
